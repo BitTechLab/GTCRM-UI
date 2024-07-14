@@ -1,0 +1,21 @@
+services:
+  gtcrm-ui:
+    platform: linux/arm64/v8 #this line is optional if you are using Mac Silicon chip (M1/M2/M3)
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gtcrm-ui
+    ports:
+    # - "3000:3000"
+    - 5173:5173
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - /var/www/node_modules
+    networks:
+      - gtmux-network
+
+networks:
+  gtmux-network:
+    driver: bridge
