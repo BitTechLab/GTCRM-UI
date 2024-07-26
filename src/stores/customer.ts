@@ -4,6 +4,7 @@ import { Operation } from '@/enums/operation'
 import { ref } from 'vue'
 import { Customer } from '@/interfaces/customer'
 import { SORT_BY_ID, SORT_DIRECTION_ASC } from '@/const'
+import { useAuthStore } from './auth'
 
 export const useCustomerStore = defineStore('customer', () => {
   const page = ref(0);
@@ -23,7 +24,9 @@ export const useCustomerStore = defineStore('customer', () => {
   const sort = ref();
   const direction = ref();
 
-  const fetchCustomers = async () => {
+  const authStore = useAuthStore()
+
+  const fetchCustomers = async (): any => {
     loading.value = true
 
     const { data, error } = await getRequest(V1_API.CUSTOMER, {
@@ -40,7 +43,7 @@ export const useCustomerStore = defineStore('customer', () => {
     loading.value = false
   }
 
-  const editCustomer = async (id: Number) => {
+  const editCustomer = async (id: Number): any => {
     clearModal()
 
     modalLoading.value = true
@@ -55,14 +58,15 @@ export const useCustomerStore = defineStore('customer', () => {
     modalLoading.value = false
   }
 
-  const addCustomer = async () => {
+  const addCustomer = async (): any => {
+    console.log(authStore.user)
     clearModal()
 
     modal.value = true
     operation.value = Operation.Add
   }
 
-  const deleteCustomer = async (id: number) => {
+  const deleteCustomer = async (id: number): any => {
     operation.value = Operation.Delete
 
     console.log(id)

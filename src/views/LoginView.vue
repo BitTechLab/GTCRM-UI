@@ -52,7 +52,7 @@ const handleLogin = async () => {
 
             <form @submit.prevent="handleLogin">
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="email">
                         Email
                     </label>
                     <input
@@ -60,7 +60,7 @@ const handleLogin = async () => {
                         id="email" type="email" placeholder="Email Address" v-model="email">
                 </div>
                 <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="password">
                         Password
                     </label>
                     <input

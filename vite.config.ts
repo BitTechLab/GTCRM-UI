@@ -9,19 +9,19 @@ export default defineConfig({
     vue(),
     VueDevTools(),
   ],
-  server: {
-    host: '0.0.0.0',
-    hmr: {
-        host: "localhost",
-    },
-    // watch: {
-    //     usePolling: true,
-    //     // interval: 100,
-    // },
-  },
   resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
-  }
+  },
+  server: {
+    port: 3030,
+    host: '0.0.0.0',
+    hmr: {
+        host: "localhost",
+    },
+  },
+  preview: {
+    port: 3030,
+  },
 })

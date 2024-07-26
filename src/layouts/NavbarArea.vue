@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import SetLocale from './SetLocale.vue';
-import { RouterLink } from 'vue-router';
+import SetLocale from './SetLocale.vue'
+import { RouterLink } from 'vue-router'
+import { storeToRefs } from 'pinia';
+import { useAuthStore } from '@/stores/auth';
+import {APP_NAME} from '@/const'
+
+const store = useAuthStore()
+const { user } = storeToRefs(store)
+
 </script>
 
 <template>
-  <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray dark:bg-gray-800 dark:border-gray-700">
+  <nav class="fixed top-0 left-0 z-50 w-full bg-white border-b border-gray dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
       <div class="flex items-center justify-between">
         <div class="flex items-center justify-start rtl:justify-end">
@@ -20,7 +27,7 @@ import { RouterLink } from 'vue-router';
             </svg>
           </button>
           <RouterLink to="/" class="flex ms-2 md:me-24">
-            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">GTCRM</span>
+            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{APP_NAME}}</span>
           </RouterLink>
         </div>
         <div class="flex items-center">
@@ -41,10 +48,10 @@ import { RouterLink } from 'vue-router';
               id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                  Neil Sims
+                  {{ user?.name }}
                 </p>
                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                  neil.sims@flowbite.com
+                  {{ user?.email }}
                 </p>
               </div>
               <ul class="py-1" role="none">
@@ -66,7 +73,8 @@ import { RouterLink } from 'vue-router';
                 <li>
                   <a href="#"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                    role="menuitem">Sign out</a>
+                    role="menuitem"
+                    @click="store.logout">Sign out</a>
                 </li>
               </ul>
             </div>

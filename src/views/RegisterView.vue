@@ -57,7 +57,7 @@ const handleRegister = async () => {
 
             <form v-show="!success" @submit.prevent="handleRegister">
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="name">
                         Name
                     </label>
                     <input
@@ -65,7 +65,7 @@ const handleRegister = async () => {
                         name="name" v-model="name" id="name" type="text" placeholder="Name" required>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="email">
                         Email
                     </label>
                     <input
@@ -73,7 +73,7 @@ const handleRegister = async () => {
                         name="email" v-model="email" id="email" type="email" placeholder="Email Address" required>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="password">
                         Password
                     </label>
                     <input
@@ -82,7 +82,7 @@ const handleRegister = async () => {
                         required>
                 </div>
                 <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 text-left" for="confirm-password">
                         Confirm Password
                     </label>
                     <input
