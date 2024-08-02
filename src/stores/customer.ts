@@ -38,7 +38,7 @@ export const useCustomerStore = defineStore('customer', () => {
 
     count.value = data?.count
     customers.value = data?.data || []
-    pagination.value = data?.meta?.links
+    pagination.value = data?.meta
     errorMessage.value = error
     loading.value = false
   }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUpdated, ref } from 'vue';
 import CustomerModal from './CustomerModal.vue';
-import PaginateList from '@/components/PaginateList.vue';
+import Pagination from '@/components/Pagination.vue';
 import LoadingEffect from '@/components/effect/LoadingEffect.vue';
 import ErrorMessage from '@/components/ErrorMessage.vue';
 import DeleteModal from '@/components/DeleteModal.vue';
@@ -185,7 +185,7 @@ const handleShowDelete = (id: number) => {
     </table>
   </div>
 
-  <PaginateList baseUrl="customer" :links="store.pagination" />
+  <Pagination baseUrl="customer" :pagination="store.pagination" />
 
   <CustomerModal />
   <DeleteModal :show="store.showDelete" :id="deleteId" :handleDelete="store.handleDelete" :loading="store.deleteLoading"
